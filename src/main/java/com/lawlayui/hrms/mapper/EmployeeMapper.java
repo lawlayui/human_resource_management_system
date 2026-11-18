@@ -1,5 +1,7 @@
 package com.lawlayui.hrms.mapper;
 
+import java.time.LocalDateTime;
+
 import com.lawlayui.hrms.persistence.entity.Employee;
 import com.lawlayui.hrms.validation.EmployeeRequest;
 import com.lawlayui.hrms.validation.EmployeeResponse;
@@ -15,12 +17,14 @@ public class EmployeeMapper {
         .hireDate(request.getHireDate())
         .employmentStatus(request.getEmploymentStatus())
         .position(request.getPosition())
+        .createdAt(LocalDateTime.now())
         .build();
     }
 
     public static EmployeeResponseDetail entityToResponseDetail(Employee entity) {
         return EmployeeResponseDetail.builder()
         .id(entity.getId())
+        .nik(entity.getNik())
         .fullName(entity.getFullName())
         .email(entity.getEmail())
         .phone(entity.getPhone())
@@ -41,11 +45,9 @@ public class EmployeeMapper {
 
     public static void updateEntity(Employee entity, EmployeeRequest request) {
         entity.setFullName(request.getFullName());
-        entity.setEmail(request.getEmail());
         entity.setPhone(request.getPhone());
         entity.setEmploymentStatus(request.getEmploymentStatus());
         entity.setHireDate(request.getHireDate());
-        entity.setNik(request.getNik());
         entity.setPosition(request.getPosition());
     }
 }

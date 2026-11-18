@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: human_resource_management_system
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hrms?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: admin_test
+    password: admin_test@2026
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  flyway:
+    enabled: false

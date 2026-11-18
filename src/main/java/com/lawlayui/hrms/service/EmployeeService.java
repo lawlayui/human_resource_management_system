@@ -49,6 +49,7 @@ public class EmployeeService {
             .orElseThrow(() -> new EmployeeNotFoundException("Employee with id " + id + " not found"));
         employee.setDepartment(department);
         EmployeeMapper.updateEntity(employee, request);
+        employeeRepository.save(employee);
     }
 
     public void deleteById(Integer id) {

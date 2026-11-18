@@ -1,0 +1,28 @@
+info:
+  name: Create Employee
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/api/employees
+  body:
+    type: json
+    data: |-
+      {
+        "nik": "1234567023389",
+        "fullName": "Yowa",
+        "email": "yowa@gmail.com",
+        "phone": "+62 083108564609",
+        "hireDate": "2026-10-17",
+        "employmentStatus": "permanent",
+        "departmentId": 2,
+        "position": "Backend Dev"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

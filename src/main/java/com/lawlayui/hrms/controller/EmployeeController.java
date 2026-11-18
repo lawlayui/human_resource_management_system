@@ -19,6 +19,7 @@ import com.lawlayui.hrms.validation.EmployeeRequest;
 import com.lawlayui.hrms.validation.EmployeeResponse;
 import com.lawlayui.hrms.validation.EmployeeResponseDetail;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController 
@@ -51,7 +52,7 @@ public class EmployeeController {
 
     @PostMapping
     public ResponseEntity<?> create(
-        @RequestBody EmployeeRequest request
+        @RequestBody @Valid EmployeeRequest request
     ) {
         employeeService.create(request);
         return ResponseEntity.noContent().build();
@@ -60,7 +61,7 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public ResponseEntity<?> update(
         @PathVariable Integer id,
-        @RequestBody  EmployeeRequest request
+        @RequestBody @Valid EmployeeRequest request
     ) {
         employeeService.update(id, request);
         return ResponseEntity.noContent().build();
