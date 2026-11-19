@@ -6,9 +6,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface AttendanceRepository extends JpaRepository<Attendance, Integer> {
     Optional<Attendance> findByDateAndEmployee_id(LocalDate date, Integer id);
 }
