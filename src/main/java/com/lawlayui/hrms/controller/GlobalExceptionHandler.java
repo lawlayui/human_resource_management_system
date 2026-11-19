@@ -39,25 +39,25 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleAtendanceNotFound(AttendanceNotFoundException ex) {
         String errorMessage = ex.getMessage();
         ErrorResponse errorResponse = new ErrorResponse("NOT FOUND", errorMessage);
-        return ResponseEntity.badRequest().body(errorResponse);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
     @ExceptionHandler(DepartmentNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleDepartmentNotFound(DepartmentNotFoundException ex) {
         String errorMessage = ex.getMessage();
         ErrorResponse errorResponse = new ErrorResponse("NOT FOUND", errorMessage);
-        return ResponseEntity.badRequest().body(errorResponse);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
     @ExceptionHandler(EmployeeNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleEmployeeNotfound(EmployeeNotFoundException ex) {
         String errorMessage = ex.getMessage();
         ErrorResponse errorResponse = new ErrorResponse("NOT FOUND", errorMessage);
-        return ResponseEntity.badRequest().body(errorResponse);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
     @ExceptionHandler(LeaveBalanceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleLeaveBalanceNotFound(LeaveBalanceNotFoundException ex) {
         String errorMessage = ex.getMessage();
         ErrorResponse errorResponse = new ErrorResponse("NOT FOUND", errorMessage);
-        return ResponseEntity.badRequest().body(errorResponse);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
     @ExceptionHandler(Exception.class)
