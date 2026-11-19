@@ -54,7 +54,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errorResponse);
     }
     @ExceptionHandler(LeaveBalanceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleLeavebalanceNotFound(LeaveBalanceNotFoundException ex) {
+    public ResponseEntity<ErrorResponse> handleLeaveBalanceNotFound(LeaveBalanceNotFoundException ex) {
         String errorMessage = ex.getMessage();
         ErrorResponse errorResponse = new ErrorResponse("NOT FOUND", errorMessage);
         return ResponseEntity.badRequest().body(errorResponse);
