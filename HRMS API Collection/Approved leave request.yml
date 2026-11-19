@@ -1,0 +1,26 @@
+info:
+  name: Approved leave request
+  type: http
+  seq: 14
+
+http:
+  method: PATCH
+  url: http://localhost:8080/api/leave-request/:id/decision
+  params:
+    - name: id
+      value: "1"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "decision": "approved",
+        "apporovedby": 1
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

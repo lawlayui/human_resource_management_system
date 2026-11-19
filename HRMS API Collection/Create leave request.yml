@@ -1,0 +1,26 @@
+info:
+  name: Create leave request
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: http://localhost:8080/api/leave-request
+  body:
+    type: json
+    data: |-
+      {
+        "employeeId": 4,
+        "leaveType": "sick",
+        "startDate": "2026-11-10",
+        "endDate": "2026-12-30",
+        "reason": "Saya lagi sakit tidak ada hal lainnya",
+        "attachmentUrl": "/api/assets/employeeId"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

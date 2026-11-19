@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.lawlayui.hrms.service.exception.AttendanceNotFoundException;
 import com.lawlayui.hrms.service.exception.DepartmentNotFoundException;
 import com.lawlayui.hrms.service.exception.EmployeeNotFoundException;
+import com.lawlayui.hrms.service.exception.InvalidLeaveRequestException;
 import com.lawlayui.hrms.service.exception.LeaveBalanceNotFoundException;
 import com.lawlayui.hrms.validation.ErrorResponse;
 
@@ -60,6 +61,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
+    @ExceptionHandler(InvalidLeaveRequestException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidLeaveRequest(InvalidLeaveRequestException ex) {
+        String errorMessage = ex.getMessage();
+        ErrorResponse errorResponse = new ErrorResponse("INVLAID LEAVE REQUEST", errorMessage);
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleInternalException(Exception ex) {
         String errorMessage = ex.getMessage();

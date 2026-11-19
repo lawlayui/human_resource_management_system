@@ -1,0 +1,24 @@
+info:
+  name: Create Leave Balance
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: http://localhost:8080/api/leave-balance
+  body:
+    type: json
+    data: |-
+      {
+        "employeeId": 4,
+        "year": 2026,
+        "totalQuota": 12,
+        "usedQuota": 0
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
