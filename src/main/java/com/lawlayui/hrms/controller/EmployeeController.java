@@ -1,5 +1,7 @@
 package com.lawlayui.hrms.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,8 @@ import com.lawlayui.hrms.service.EmployeeService;
 import com.lawlayui.hrms.validation.EmployeeRequest;
 import com.lawlayui.hrms.validation.EmployeeResponse;
 import com.lawlayui.hrms.validation.EmployeeResponseDetail;
+import com.lawlayui.hrms.validation.EmployeeSalaryRequest;
+import com.lawlayui.hrms.validation.EmployeeSalaryResponse;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -64,6 +68,24 @@ public class EmployeeController {
         @RequestBody @Valid EmployeeRequest request
     ) {
         employeeService.update(id, request);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/salaries")
+    public ResponseEntity<List<EmployeeSalaryResponse>> getEmployeeSalary(
+        @PathVariable Integer id
+    ) {
+        List<EmployeeSalaryResponse> result = employeeService.getEmployeeSalary(id);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/{id}/salaries")
+    public ResponseEntity<?> createEmployeeSalary(
+        @PathVariable Integer id,
+        @RequestBody @Valid EmployeeSalaryRequest request
+    ) {
+        request.setEmployeeId(id);
+        employeeService.createEmployeeSalary(request);
         return ResponseEntity.noContent().build();
     }
 }
